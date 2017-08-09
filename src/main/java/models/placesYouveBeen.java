@@ -51,5 +51,8 @@ public class placesYouveBeen {
     public void update(String places) {
         this.places = places;
     }
+    public void deletePost(){
+        allPlaces.remove(id-1);
+    }
 
 }

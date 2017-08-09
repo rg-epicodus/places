@@ -84,7 +84,21 @@ public class placesYouveBeenTest {
         assertNotEquals(formerContent, places.getPlaces());
     }
     @Test
+    public void deleteDeletesASpecificPost() throws Exception {
+        placesYouveBeen places = newPlaces();
+        placesYouveBeen otherPost = new placesYouveBeen("How to pair successfully");
+        places.deletePost();
+        assertEquals(1, placesYouveBeen.getAllPlaces().size()); //one is left
+        assertEquals(placesYouveBeen.getAllPlaces().get(0).getId(), 2); //the one that was deleted has the id of 2. Why do we care?
+    }
+    @Test
+    public void deleteAllPostsDeletesAllPosts() throws Exception {
+        placesYouveBeen post = newPlaces();;
+        placesYouveBeen otherPost = newPlaces();
 
+        placesYouveBeen.clearAllPlaces();
+        assertEquals(0, placesYouveBeen.getAllPlaces().size());
+    }
 
     // Helpers
     public placesYouveBeen newPlaces() {

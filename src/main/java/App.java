@@ -61,6 +61,17 @@ public class App {
             editPost.update(newContent); //don’t forget me
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
-
+        get("/places/:id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfPostToDelete = Integer.parseInt(req.params("id")); //pull id - must match route segment
+            placesYouveBeen deletePost = placesYouveBeen.findById(idOfPostToDelete); //use it to find post
+            deletePost.deletePost();
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/posts/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            placesYouveBeen.clearAllPlaces();
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }
