@@ -48,5 +48,8 @@ public class placesYouveBeen {
         return allPlaces.get(id-1);
     }
 
+    public void update(String places) {
+        this.places = places;
+    }
 
 }

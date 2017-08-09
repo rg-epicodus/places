@@ -43,5 +43,24 @@ public class App {
             model.put("places", placesVisited);
             return new ModelAndView(model, "place-detail.hbs"); //individual post page.
         }, new HandlebarsTemplateEngine());
+
+        //get: show a form to update a post
+        get("/places/:id/update", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfPostToEdit = Integer.parseInt(req.params("id"));
+            placesYouveBeen editPost = placesYouveBeen.findById(idOfPostToEdit);
+            model.put("editPlaces", editPost);
+            return new ModelAndView(model, "newplaces-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/places/:id/update", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String newContent = req.queryParams("places");
+            int idOfPostToEdit = Integer.parseInt(req.params("id"));
+            placesYouveBeen editPost = placesYouveBeen.findById(idOfPostToEdit);
+            editPost.update(newContent); //don’t forget me
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
+
     }
 }

@@ -70,6 +70,22 @@ public class placesYouveBeenTest {
         assertEquals(2, placesYouveBeen.findById(otherPlace.getId()).getId());
     }
 
+    @Test
+    public void updateChangesPostContent() throws Exception {
+        placesYouveBeen places = newPlaces();
+        String formerContent = places.getPlaces();
+        LocalDateTime formerDate = places.getCreatedAt();
+        int formerId = places.getId();
+
+        places.update("Android: Day 40");
+
+        assertEquals(formerId, places.getId());
+        assertEquals(formerDate, places.getCreatedAt());
+        assertNotEquals(formerContent, places.getPlaces());
+    }
+    @Test
+
+
     // Helpers
     public placesYouveBeen newPlaces() {
         return new placesYouveBeen("Mexico");
