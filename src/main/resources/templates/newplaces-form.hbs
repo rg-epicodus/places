@@ -1,0 +1,13 @@
+{{#partial "content"}}
+
+    <h1>Add a new Place!</h1>
+
+    <form action="/places/new" method="post">
+        <label for="places">Post Content</label>
+        <input id="places" name="places" type="text">
+
+        <button type="submit" class="btn btn-default">Add new place!</button>
+    </form>
+{{/partial}}
+
+{{> layout.hbs}}

@@ -1,29 +1,18 @@
 {{#partial "content"}}
-    <div class="container">
+
     <h1>Places I've Visited!</h1>
 
     {{#if allPlaces}}
     {{#each allPlaces}} <!--loop-->
     <h3>Place Visited:</h3><p><br> {{places}}</p>
-    <p>{{createdAt}}</p>
+    <p>{{createdAt}}</p><br><p>{{ places }} <a href="/places/{{id}}"> read more...</a></p>
     <p>-------------------------------</p>
     {{/each}}
 {{else}}
 <p>No places visited!</p>
 {{/if}}
-
-    <h1>Post new location!</h1>
-
-    <p>Add a new location:</p>
-
-    <form action="/places/new" method="post">
-        <label for="places">Place You've Been</label>
-        <input id="places" name="places" type="text">
-
-        <button type="submit" class="btn btn-default">Add Place!</button>
-    </form>
-    </div>
 {{/partial}}
+
 
 {{> layout.hbs}}
 
